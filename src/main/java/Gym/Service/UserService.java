@@ -111,6 +111,11 @@ public class UserService {
                 .orElseThrow(() -> new RuntimeException("User not found"));
     }
 
+    public Users getUserById(Long id) {
+        return userReposiotory.findById(id)
+                .orElseThrow(() -> new RuntimeException("Customer not found"));
+    }
+
     public List<Users> getAllUsers() {
         return userReposiotory.findAll();
     }

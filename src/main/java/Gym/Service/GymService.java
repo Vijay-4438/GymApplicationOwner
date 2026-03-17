@@ -177,14 +177,8 @@ public class GymService {
         Users user = userReposiotory.findByEmail(email)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, "User not found"));
 
-        // Check role
-        if (user.getRole() == Role.CUSTOMER) {
-            // Customer: can only access active gyms
-            if (!Boolean.TRUE.equals(gym.getActive())) {
-                throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Gym is not active");
-            }
-        } else {
-            // Owner: can only access gyms they own
+        // Owner: can only access gyms they own
+        if (user.getRole() != Role.CUSTOMER) {
             if (!gym.getOwner().getId().equals(user.getId())) {
                 throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You cannot access this gym");
             }
