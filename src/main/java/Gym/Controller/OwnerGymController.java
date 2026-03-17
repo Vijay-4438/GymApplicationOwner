@@ -16,31 +16,37 @@ public class OwnerGymController {
 
     @PostMapping("/create")
     public Gymm create(@RequestBody Gymm gym) {
+
         return gymService.createGym(gym);
     }
 
     @GetMapping("/all")
     public List<Gymm> getAllGyms() {
+
         return gymService.getAll();
     }
 
     @GetMapping("/facilities")
     public List<String> getFacilites() {
+
         return gymService.getAllFacilities();
     }
 
     @PutMapping("/updateGym/{id}")
     public Gymm updatee(@PathVariable Long id, @RequestBody Gymm gym) {
+
         return gymService.updateGym(id, gym);
     }
 
     @PutMapping("/{id}/activate")
     public Gymm activateGym(@PathVariable Long id) {
+
         return gymService.activateGym(id);
     }
 
     @GetMapping("/active/{id}")
     public Gymm getActiveGymById(@PathVariable Long id) {
+
         return gymService.getActiveGymById(id);
     }
 }

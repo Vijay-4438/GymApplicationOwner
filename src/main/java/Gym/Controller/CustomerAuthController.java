@@ -19,11 +19,13 @@ public class CustomerAuthController {
 
     @PostMapping("/register")
     public Users register(@RequestBody RegisterRequest request) {
+
         return userService.register(request, Role.CUSTOMER);
     }
 
     @PostMapping("/login")
     public String login(@RequestBody LoginRequest request) {
+
         return userService.login(request, Role.CUSTOMER);
     }
 
