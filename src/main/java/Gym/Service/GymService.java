@@ -190,25 +190,25 @@ public class GymService {
         return gymRepository.findByActiveTrue();
     }
 
-    public Gymm activateGymForCustomer(Long id) {
-        // Get gym
-        Gymm gym = gymRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Gym not found"));
-
-        // Get logged-in user
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String email = auth.getName();
-        Users customer = userReposiotory.findByEmail(email)
-                .orElseThrow(() -> new RuntimeException("User not found"));
-
-        // Check role
-        if (customer.getRole() != Role.CUSTOMER) {
-            throw new RuntimeException("Only customers can activate this gym");
-        }
-
-        // Here you define your “activation” logic for customer
-        // For example, you might mark this gym as “interested” or “reserved” for the customer
-        gym.setActive(true);  // If your use case really wants this
-        return gymRepository.save(gym);
-    }
+//    public Gymm activateGymForCustomer(Long id) {
+//        // Get gym
+//        Gymm gym = gymRepository.findById(id)
+//                .orElseThrow(() -> new RuntimeException("Gym not found"));
+//
+//        // Get logged-in user
+//        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+//        String email = auth.getName();
+//        Users customer = userReposiotory.findByEmail(email)
+//                .orElseThrow(() -> new RuntimeException("User not found"));
+//
+//        // Check role
+//        if (customer.getRole() != Role.CUSTOMER) {
+//            throw new RuntimeException("Only customers can activate this gym");
+//        }
+//
+//        // Here you define your “activation” logic for customer
+//        // For example, you might mark this gym as “interested” or “reserved” for the customer
+//        gym.setActive(true);  // If your use case really wants this
+//        return gymRepository.save(gym);
+//    }
 }

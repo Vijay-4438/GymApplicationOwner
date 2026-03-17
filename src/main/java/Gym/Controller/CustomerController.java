@@ -26,13 +26,10 @@ public class CustomerController {
         return userService.getUserById(id);
     }
 
-    @GetMapping("/gym/{id}")
+    @GetMapping("/{id}")
     public Gymm getGymById(@PathVariable Long id) {
         return gymService.gettGymById(id);
     }
 
-    @PutMapping("/{id}/activate")
-    public Gymm activateGym(@PathVariable Long id) {
-        return gymService.activateGymForCustomer(id);
+
     }
-}
