@@ -23,11 +23,13 @@ public class CustomerController {
 
     @GetMapping("/{id}")
     public Users getCustomerById(@PathVariable Long id) {
+
         return userService.getUserById(id);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/gym/{id}")
     public Gymm getGymById(@PathVariable Long id) {
+
         return gymService.gettGymById(id);
     }
 
